@@ -7,18 +7,22 @@ import java.time.Duration;
 
 public class ApplicationManager {
     WebDriver wd;
-    public void init(){
+    HelperUser helperUser;
 
+    public void init() {
         wd = new ChromeDriver();
         wd.manage().window().maximize();
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        wd.navigate().to("https://ilcarro.web.app/");
+        wd.navigate().to("https://ilcarro.web.app");
+        helperUser= new HelperUser(wd);
 
     }
+
     public void stop() {
-         wd.quit();
-
+        wd.quit();
     }
 
-
+    public HelperUser getHelperUser() {
+        return helperUser;
+    }
 }
