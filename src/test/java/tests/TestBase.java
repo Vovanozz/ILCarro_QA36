@@ -1,3 +1,5 @@
+package tests;
+
 import manager.ApplicationManager;
 import manager.HelperUser;
 import org.testng.annotations.AfterSuite;

@@ -10,6 +10,9 @@ public class HelperBase {
     public HelperBase(WebDriver wd) {
         this.wd = wd;
     }
+    public boolean isElementPresent(By locator){
+        return wd.findElements(locator).size()>0;
+    }
 
     public void type(By locator, String text){
         if(text!=null){
@@ -20,6 +23,7 @@ public class HelperBase {
         }
 
     }
+
 
     public void click(By locator){
         wd.findElement(locator).click();
