@@ -31,12 +31,13 @@ public void fillLoginForm(String email,String password){
 
 }
 
-public void submitLogin(){
+public void submit(){
         click(By.xpath("//button[@type='submit']"));
 }
 public void clickOkButton(){
         click(By.xpath("//button[@type='button']"));
 }
+
 
 
 
