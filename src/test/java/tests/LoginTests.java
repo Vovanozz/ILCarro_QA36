@@ -1,59 +1,64 @@
 package tests;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class LoginTests extends TestBase{
-@BeforeMethod
-public void preCondition(){
-    if(app.getHelperUser().isLogged()){
-       app.getHelperUser().logout();
-    }
+import java.util.Random;
 
-}
+public class LoginTests extends TestBase {
 
-    @Test
-    public void loginSuccess(){
-    app.getHelperUser().openLoginForm();
-    app.getHelperUser().fillLoginForm("vladimirozz@gmail.com","Vova1234$");
-    app.getHelperUser().submit();
-    //Assert.assertEquals(app.getHelperUser().getMessage(),"Logged in success");
-
+    @BeforeMethod
+    public void preCondition() {
+        if (app.getHelperUser().isLogged()) {
+            app.getHelperUser().logout();
+        }
     }
 
     @Test
-    public void loginWrongEmail(){
-    app.getHelperUser().openLoginForm();
-    app.getHelperUser().fillLoginForm("vladimirozzgmail.com","Vova1234$");
-    app.getHelperUser().submit();
-        Assert.assertTrue(app.getHelperUser().isElementPresent(By.xpath("//div[text()=\\\"It'snot look like email\\\"]")));
-
-
-
-
-    }
-    @Test
-    public void loginWrongPassword(){
+    public void successLogin() {
         app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm("vladimirozz@gmail.com","vova1234$");
+        app.getHelperUser().fillLoginForm("vladimirozz@gmail.com", "Vova1234$");
         app.getHelperUser().submit();
-        Assert.assertTrue(app.getHelperUser().isElementPresent(By.xpath("//h1[normalize-space()='Login failed']")));
-        Assert.assertTrue(app.getHelperUser().isElementPresent(By.xpath("//h2[normalize-space()='\"Login or Password incorrect\"']")));
+        Assert.assertTrue(app.getHelperUser().isLogged());
+        Assert.assertEquals(app.getHelperUser().checkMessage(),"Logged in success");
     }
+
     @Test
-    public void loginUnregisterUser(){
-    app.getHelperUser().openLoginForm();
-    app.getHelperUser().fillLoginForm("chupakabra@gmail.com","Chupakabra123456@#");
-    app.getHelperUser().submit();
-    
+    public void loginWrongEmail() {
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm("vladimirozzgmail.com", "Vova1234$");
+        app.getHelperUser().submit();
+        Assert.assertFalse(app.getHelperUser().isLogged());
+        Assert.assertEquals(app.getHelperUser().checkWrongEmail(),"It'snot look like email");
+    }
+
+    @Test
+    public void loginWrongPassword() {
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm("vladimirozz@gmail.com", "vova1234$");
+        app.getHelperUser().submit();
+        Assert.assertFalse(app.getHelperUser().isLogged());
+        Assert.assertEquals(app.getHelperUser().checkMessage(),"\"Login or Password incorrect\"");
+    }
+
+    @Test
+    public void loginUnregisterUser() {
+        Random random = new Random();
+        int i = random.nextInt(1000);
+
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm("chupakabra"+i+"@gmail.ru", "Chupakabra123456@#");
+        app.getHelperUser().submit();
+        Assert.assertFalse(app.getHelperUser().isLogged());
+        Assert.assertEquals(app.getHelperUser().checkMessage(),"\"Login or Password incorrect\"");
 
     }
     @AfterMethod
-    public void postCondition(){
-        app.getHelperUser().clickOkButton();
+    public void closeDialog(){
+        app.getHelperUser().closeDialog();
+
     }
 }

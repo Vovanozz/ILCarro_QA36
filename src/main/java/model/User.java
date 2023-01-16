@@ -2,32 +2,36 @@ package model;
 
 public class User {
     private String name;
-    private String Lastname;
+    private String lastName;
     private String email;
     private String password;
 
-    public void setName(String name) {
+    public User withName(String name) {
         this.name = name;
+        return this;
     }
 
-    public void setLastname(String lastname) {
-        Lastname = lastname;
+    public User withLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
     }
 
-    public void setEmail(String email) {
+    public User withEmail(String email) {
         this.email = email;
+        return this;
     }
 
-    public void setPassword(String password) {
+    public User withPassword(String password) {
         this.password = password;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getLastname() {
-        return Lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getEmail() {
@@ -42,7 +46,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
-                ", Lastname='" + Lastname + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

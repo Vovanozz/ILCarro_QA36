@@ -1,3 +1,4 @@
+
 package manager;
 
 import org.openqa.selenium.By;
@@ -10,22 +11,26 @@ public class HelperBase {
     public HelperBase(WebDriver wd) {
         this.wd = wd;
     }
-    public boolean isElementPresent(By locator){
-        return wd.findElements(locator).size()>0;
+
+    public String getText(By locator){
+        return wd.findElement(locator).getText();
     }
 
-    public void type(By locator, String text){
-        if(text!=null){
-            WebElement element = wd.findElement(locator);
-            element.click();
-            element.clear();
-            element.sendKeys(text);
-        }
+    public void type(By locator, String text) {
+
+        WebElement element = wd.findElement(locator);
+        element.click();
+        element.clear();
+        element.sendKeys(text);
 
     }
 
-
-    public void click(By locator){
+    public void click(By locator) {
         wd.findElement(locator).click();
     }
+    public boolean isElementPresent(By locator){
+        return wd.findElements(locator).size()>0;
+
+    }
 }
+
