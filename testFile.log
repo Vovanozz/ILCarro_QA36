@@ -1,0 +1,15 @@
+06:08:57.768  INFO  manager.ApplicationManager  All tests start in Chrome Browser
+06:08:59.908  INFO  manager.ApplicationManager  Current Url-->https://ilcarro.web.app/search
+06:08:59.958  INFO  tests.TestBase  The name of starts method is--->addNewCarSuccess
+06:11:00.578  INFO  manager.ApplicationManager  All tests start in Chrome Browser
+06:11:02.631  INFO  manager.ApplicationManager  Current Url-->https://ilcarro.web.app/search
+06:11:02.661  INFO  tests.TestBase  The name of starts method is--->addNewCarSuccess
+06:13:54.668  INFO  manager.ApplicationManager  All tests start in Chrome Browser
+06:13:56.752  INFO  manager.ApplicationManager  Current Url-->https://ilcarro.web.app/search
+06:13:56.784  INFO  tests.TestBase  The name of starts method is--->addNewCarSuccess
+06:14:07.281  INFO  tests.TestBase  Method 'addNewCarSuccess' stopped with: Car(location=Haifa, Israel, manufacture=BMW, model=M5, year=2020, fuel=Petrol, seats=4, clasS=C, carRegNumber=555-00-1886, price=65, about=very nice car)
+06:15:25.130  INFO  manager.ApplicationManager  All tests start in Chrome Browser
+06:15:27.277  INFO  manager.ApplicationManager  Current Url-->https://ilcarro.web.app/search
+06:15:27.301  INFO  tests.TestBase  The name of starts method is--->addNewCarSuccess
+06:15:38.332  INFO  tests.TestBase  Method 'addNewCarSuccess' stopped with:
+Car(location=Haifa, Israel, manufacture=BMW, model=M5, year=2020, fuel=Petrol, seats=4, clasS=C, carRegNumber=555-00-1743, price=65, about=very nice car)

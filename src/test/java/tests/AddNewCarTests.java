@@ -33,14 +33,11 @@ public class AddNewCarTests extends TestBase{
                 .price("65")
                 .about("very nice car")
                 .build();
-
-
         app.getHelperCar().openCarForm();
         app.getHelperCar().fillCarForm(car);
-        app.getHelperCar().attachPhoto("/Users/tayahatum/Qa36/Qa36_IlCarro/comaro.jpeg");
+        //app.getHelperCar().attachPhoto("");
         app.getHelperCar().submit();
-
         Assert.assertTrue(app.getHelperCar().isTitleMessageContains("Car added"));
-
+        logger.info("Method 'addNewCarSuccess' stopped with:\n"+car.toString());
     }
 }
